@@ -3,11 +3,11 @@
 <html>
   
 <head>
-  <title>305 Class Work</title>
+  <title> 305 Class Work </title>
   
 </head>
 
 <body>
   </body>
   
-  </html>
+</html>
