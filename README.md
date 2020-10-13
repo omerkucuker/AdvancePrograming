@@ -5,8 +5,8 @@
     
   </head>
   <body>
-    <h1>My home page</h1>
-    <p>305 CLASS WORK</p>
+    <h1>305 CLASS WORK</h1>
+   
     
   </body>
 </html>
