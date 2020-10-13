@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://blm-fsmvu.github.io/305/work/Counting.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+    <title>Sayaç </title>
+
+  <style> /* CSS comment */
+    body { max-width: 440px; }
+    #inp { width: 50px }
+    #out {
+        font-size: 18px;
+        background: blue;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+  </style>
+<script data-dapp-detection="">
+(function() {
+  let alreadyInsertedMetaTag = false
+
+  function __insertDappDetected() {
+    if (!alreadyInsertedMetaTag) {
+      const meta = document.createElement('meta')
+      meta.name = 'dapp-detected'
+      document.head.appendChild(meta)
+      alreadyInsertedMetaTag = true
+    }
+  }
+
+  if (window.hasOwnProperty('web3')) {
+    // Note a closure can't be used for this var because some sites like
+    // www.wnyc.org do a second script execution via eval for some reason.
+    window.__disableDappDetectionInsertion = true
+    // Likely oldWeb3 is undefined and it has a property only because
+    // we defined it. Some sites like wnyc.org are evaling all scripts
+    // that exist again, so this is protection against multiple calls.
+    if (window.web3 === undefined) {
+      return
+    }
+    __insertDappDetected()
+  } else {
+    var oldWeb3 = window.web3
+    Object.defineProperty(window, 'web3', {
+      configurable: true,
+      set: function (val) {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        oldWeb3 = val
+      },
+      get: function () {
+        if (!window.__disableDappDetectionInsertion)
+          __insertDappDetected()
+        return oldWeb3
+      }
+    })
+  }
+})()</script></head>
+
+<body>   <!-- HTML comment: Modify all items marked xxx -->
+
+<h2 id="title">Sayı</h2>
+Sayı 
+<input type="number" id="inp" value="0" onchange="out.innerText=value">
+ 
+<h2 id="title">Inc</h2>
+Sayı 
+<input type="number" id="inch" value="0" onchange="cm.value=value * 2.54 ">
+
+<h2 id="title">Cm</h2>
+Sayı 
+<input type="number" id="cm" value="0" onchange="inch.value = value * 0.39" >
+
+ 
+<input type="button" value="Arttır" onclick="increment()">
+<p id="out">1</p>
+
+<hr>
+<b>Sample code</b>
+<pre id="sample">function increment() {<br>    let c = Number(out.innerText)+1<br>    console.log("counter = "+c);<br>    out.innerText = c;<br>}</pre>
+
+<hr>
+<p>Ref: <a href="https://www.w3schools.com/js/" target="NewTab">JS Tutorial</a>
+</p>
+
+<script>
+"use strict";
+// JavaScript comment
+function increment() {
+    let c = Number(out.innerText)+1
+    console.log("counter = "+c);
+    out.innerText = c;
+}
+    //global variable id is the HTML element with id 
+    //const title = document.getElementById("title");
+    title.innerText = document.title;
+    sample.innerText = increment.toString();
+    out.innerText = 0; increment();
+
+
+  
+</script>
+
+
+
+</body></html>
