@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+  <title>Callback and Promise</title>
+
+  <style>
+    /* CSS comment */
+    body {
+      max-width: 440px;
+    }
+
+    #url {
+      width: 190px;
+    }
+
+    span,
+    #url {
+      color: blue;
+    }
+  </style>
+  <script
+    data-dapp-detection="">(function () { let e = !1; function n() { if (!e) { const n = document.createElement("meta"); n.name = "dapp-detected", document.head.appendChild(n), e = !0 } } if (window.hasOwnProperty("ethereum")) { if (window.__disableDappDetectionInsertion = !0, void 0 === window.ethereum) return; n() } else { var t = window.ethereum; Object.defineProperty(window, "ethereum", { configurable: !0, set: function (e) { window.__disableDappDetectionInsertion || n(), t = e }, get: function () { return window.__disableDappDetectionInsertion || n(), t } }) } })();</script>
+</head>
+
+<body>
+  <!-- HTML comment: Modify all items marked xxx -->
+
+  <h2 id="title" title="Modify xxx">xxx</h2>
+  <p title="navigator.platform">
+    Platform: <span id="plat">??</span>
+  </p>
+  <p title="Battery level">
+    Battery level: <span id="level">??</span>
+  </p>
+  <p title="Latitude/Longitude">
+    Location: <span id="loc">??</span>
+  </p>
+  <p title="URL exists?">
+    URL <input type="url" id="url" value="https://omerkucuker.github.io/AdvancePrograming/CW%234/List_of_Objects.html" onchange="check()"> <span id="resp">??</span>
+  </p>
+  <hr>
+  <b>Sample code</b>
+  <pre
+    id="sample">function init() {<br>//write your code here<br>}<br>function check() {<br>//write your code here<br>}</pre>
+
+  <hr>
+
+  <script>
+    "use strict";
+    // JavaScript comment
+    function check() {
+      fetch(url.value).then(u=>resp.innerText=u.ok)
+    }
+    function init() {
+      plat.innerText = navigator.platform
+      navigator.geolocation.getCurrentPosition(a => loc.innerText = 
+      a.coords.latitude.toFixed(4)+","+ a.coords.longitude.toFixed(4))
+      navigator.getBattery().then(b => level.innerText = b.level*100+"%")
+      
+      check()
+    }
+    title.innerText = document.title;
+    sample.innerText = init + '\n' + check;
+    init();
+  </script>
+
+
+
+</body>
+
+</html>
