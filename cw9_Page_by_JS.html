@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+
+
+<script>
+"use strict";
+function elt(type, ...list) {
+  let e = document.createElement(type)
+  for (let c of list) {
+    e.appendChild(c instanceof Element? c
+             : document.createTextNode(c))
+  }
+  return e
+}
+
+function makePage() {
+//<p>— <b>AUTH</b>DESC<i>BOOK</i>YEAR</p>
+  let title = elt("tittle","Counter")
+  let span = elt("h2", "Initial")
+
+  let inp=  elt("input","")
+  inp.setAttribute("value","0")
+  inp.setAttribute("type","number")
+  inp.setAttribute("id","inp")
+  inp.onchange="out.innerText=value"
+  
+  let btn=elt("button","")
+  btn.setAttribute("id","btn1")
+  btn.setAttribute("name","btn1")
+  btn.onclick=increment(inp)
+  btn.innerText="+"
+
+  let out=elt("p","out")
+  out.setAttribute("id","out")
+  out.style.color="blue"
+  
+  let ref=elt("a","Ref: JS Tutorial")
+  ref.href="https://www.w3schools.com/js/"
+
+  let bold = elt("b", "Sample code")
+  let pre  = elt("pre", makePage)
+  let link = elt("a", "Creating nodes")
+  
+  document.body = elt("body", 
+      elt("h2","Counter"),
+      elt("tittle", "Initial"),
+      elt("input",inp),
+      elt("button",btn),
+      elt("hr"),
+      elt("p",out),
+
+      elt("p",ref),
+      //elt("blockquote", span, para), 
+      elt("hr"), 
+      elt("div", bold, pre), 
+      elt("div", "Ref: ", link),
+      elt("hr")
+    )
+  document.body.style.maxWidth = "420px"
+}
+const tree = [], SPACE = '&emsp;', MAX = 26;
+function toTree(e, space) {
+  let c = e.firstChild
+  if (!c || c instanceof Element) c = ''
+  else c = SPACE+c.textContent
+  if (c.length>MAX+3) c = c.substring(0, MAX)+'…'
+  console.log(space.length, e.localName, c)
+  tree.push(space+'+ '+e.tagName+c)
+  for (let c of e.children)
+      toTree(c, space+SPACE)
+}
+function increment(inp) {
+    inp.innerText = Number(inp.getAttribute("value"))+1
+}
+makePage(); toTree(document.body, '');
+let t = elt("p"); t.style.color = "green";
+t.innerHTML = tree.join('<br>');
+document.body.append(t);
+</script>
+<!-- The document body is made by the script above -->
