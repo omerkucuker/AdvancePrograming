@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="width=device-width,initial-scale=1.0; charset=UTF-8">
+    <title>Student's Database </title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+
+
+        input[type=text],
+        select,
+        textarea {
+            width: 250px;
+            padding: 10px 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+            float: left;
+            margin: auto;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-flex;
+        }
+
+        button {
+            width: 250px;
+            background-color: #4c7faf;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: left;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="kiyas"></div>
+    
+    <div class="menu">
+        <p>
+            <label for="studentId">Öğrenci Numarası</label> &nbsp
+            <br />
+            <input id="studentId" type="text" placeholder="Öğrenci numarası giriniz..">
+            <br />
+            <br />
+            <br />
+            <button onclick="getCourses()" class="myButton">Öğrencileri Getir</button>
+        </p>
+        <br />
+        <p>
+            <label for="courseName">Ders Kodu</label> &nbsp
+            <br />
+            <input id="courseName" type="text" placeholder="Ders kodu giriniz..">
+            <br />
+            <br />
+            <br />
+            <button onclick="getStudentsTaking()" class="myButton">Dersleri Getir</button>
+        </p>
+        <br />
+        <br />
+        <p>
+            <label for="examRoom">Sınav Yeri</label> &nbsp
+            <br />
+            <input id="examRoom" type="text" placeholder="Sınav yerini öğrenin..">
+            <br />
+            <br />
+            <br />
+            <button onclick="getCoursesForRoom()" class="myButton">Dersleri Getir</button>
+        </p>
+        <br />
+        <p>
+            <label for="coursesTotal">Sınıf Kodu</label> &nbsp
+            <br />
+            <input id="coursesTotal" type="text" placeholder="Sınıf kodunu giriniz..">
+            <br />
+            <br />
+            <br />
+            <button onclick="getCourseCount()" class="myButton">Derslerin Sayısını Getir</button>
+        </p>
+        <br />
+        <br />
+        <p>
+            <label for="studentGPA">Öğrenci Notu</label> &nbsp
+            <br />
+            <input id="studentGPA" type="text" placeholder="Not ortalaması giriniz..">
+            <br />
+            <br />
+            <br />
+            <button class="myButton" onclick="getBelowGPA()">Girilenin Notun Altındaki Öğrenciler</button>
+            <br />
+            <br />
+            <br />
+            <br />
+            <button class="myButton" onclick="getAboveGPA()">Girilenin Notun Yukarısındaki Öğrenciler</button>
+        </p>
+        <br />
+        <p>
+            <br />
+
+
+            <label for="examSchedule">Sınav Takvimi</label> &nbsp
+            <br />
+            <input id="examSchedule" type="text" placeholder="Öğrenci numarası giriniz..">
+            <br />
+            <br />
+            <br />
+            <button class="myButton" onclick="getExamSchedule()">Öğrencinin Sınav Takvimini Getir</button>
+        </p>
+        <br />
+        <p>
+            <br />
+            <br />
+            <button class="myButton" onClick="Random(),nineDigit()">Rastgele Öğrenci Getir</button>
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+        <div id="results"></div>
+    </div>
+</body>
+<script>
+    "use strict";
+    let stdMaps = new Map();
+    
+    function readStudents() {
+        let studentsUrl = "https://maeyler.github.io/JS/data/Students.txt";
+        fetch(studentsUrl).then(r => r.text())
+            .then(t => makeData(t, Student, stdMaps))
+    }
+    function makeData(txt, Maker, map) {
+        
+        for (let line of txt.split('\n')) {
+            if (!line) continue
+            let std = Maker.fromString(line)
+            map.set(std.studentId, std)
+        }
+        let alstdnt= [...map.keys()];
+        //console.log(alstdnt);
+        let numberss = 0;
+        let stdMap = new Map();
+        
+        let keys = [...stdMap.keys()]
+        for (let i = 0; i <= 9999; i++) {
+            numberss = Math.floor(100000000 + Math.random() * 900000000);
+            keys[i] = numberss;
+            stdMap.set(i, numberss);
+        }
+        let start = Date.now();
+        for(let i=0; i<=alstdnt.length;i++){
+            if(keys.includes(alstdnt[i])){
+                break;
+            }
+        }
+        let end = Date.now();
+        let time1 = end - start ;
+        console.log("Array of time: "+time1);
+        kiyas.innerText+="Array of time: "+time1+"\n";
+        //console.log(keys);
+        //console.log(stdMap);
+        let startt = Date.now();
+        for(let i=0; i<=alstdnt.length;i++){
+            if(stdMap.has(alstdnt[i])){
+                break;
+            }
+        }
+        let endd = Date.now();
+        let time2= endd -startt;
+        console.log("Map of time: "+time2);
+        kiyas.innerText+="Map of time: "+time2;
+    }
+    
+    readStudents();
+
+    class Course {
+        constructor(courseName, hour, date, classes) {
+            this.courseName = courseName;
+            this.hour = hour;
+            this.date = date;
+            this.classes = classes;
+        }
+
+        toString() {
+            return `name: ${this.courseName} \n hour: ${this.hour} \n date: ${this.date} \n classes: ${this.classes} \n\n`;
+        }
+    }
+
+    class Student {
+        constructor(studentId, name, grade, courses) {
+            this.studentId = studentId;
+            this.name = name;
+            this.grade = grade;
+            this.courses = courses;
+        }
+
+        toString() {
+            return `\n\nID: ${this.studentId} \n name: ${this.name} \n grade: ${this.grade} \n courses : ${this.courses} \n`;
+        }
+        static fromString(s) {
+        return new Student(...s.split('\t'))
+    }
+    }
+
+    class Database {
+        studentsUrl = "https://maeyler.github.io/JS/data/Students.txt";
+        coursesUrl = "https://maeyler.github.io/JS/data/Courses.txt";
+
+        constructor() {
+            this.students = new Map();
+            this.courses = new Map();
+        }
+
+        getData(datam) {
+            let useage;
+            if (datam) {
+                useage = this.studentsUrl;
+
+            } else {
+                useage = this.coursesUrl;
+            }
+            fetch(useage).then(res => { res.text().then(text => { this.mapFunc(text, datam); }); })
+                .catch(err => console.log(err));
+        }
+
+        mapFunc(text, mapType) {
+            let lines = text.split("\n");
+            let map;
+            let parser;
+            if (mapType) {
+                map = this.students;
+                parser = newDBUtils.parseStudent;
+
+            } else {
+                map = this.courses;
+                parser = newDBUtils.parseCourse;
+            }
+
+            for (let line of lines) {
+                let info = line.split("\t");
+                map.set(info[0], parser(info));
+            }
+
+        }
+
+        Random() {
+            console.log("random number: " + Math.floor(Math.random() * 360))
+            return [...this.students.values()][Math.floor(Math.random() * 360)]
+        }
+
+        getExamSchedule(studentId) {
+            let student = this.students.get(studentId);
+            let courseNames = student.courses;
+            let courses = [];
+            for (const courseName of courseNames) {
+                courses.push(this.courses.get(courseName));
+            }
+            return courses;
+        }
+
+        getStudentsTaking(courseName) {
+            let allStd = [...this.students.values()];
+            let StudentsofCourse = [];
+            for (const student of allStd) {
+                if (student.courses.includes(courseName)) {
+                    StudentsofCourse.push(student);
+                }
+            }
+            return StudentsofCourse;
+        }
+
+        getCourse(courseName) {
+            return this.courses.get(courseName);
+        }
+
+        getCourses(studentId) {
+            return this.students.get(studentId).courses;
+        }
+
+        getBelowGPA(gpa) {
+            return [...this.students.values()].filter(student => student.grade < gpa)
+        }
+
+        getAboveGPA(gpa) {
+            return [...this.students.values()].filter(student => student.grade > gpa)
+        }
+
+        getCoursesForRoom(examRoom) {
+            let allCourse = [...this.courses.values()];
+            let coursesOfExam = [];
+            for (const course of allCourse) {
+                if (course.classes.includes(examRoom)) {
+                    coursesOfExam.push(course);
+                }
+            }
+            return coursesOfExam;
+        }
+
+        getCourseCount(examRoom) {
+            let allCourse = [...this.courses.values()];
+            let courseCount = 0;
+            for (const course of allCourse) {
+                if (course.classes.includes(examRoom)) {
+                    courseCount += 1;
+                }
+            }
+            return courseCount;
+        }
+
+    }
+
+    class newDBUtils {
+        static parseStudent(info) {
+            return new Student(info[0], info[1], info[2], info.slice(3));
+        }
+
+        static parseCourse(info) {
+            return new Course(info[0], info[1], info[2], info.slice(3));
+        }
+    }
+
+    var newDB = new Database();
+
+
+    newDB.getData();
+    newDB.getData(true);
+
+    function Random() {
+        results.innerText = "Rastgele gelen öğrenci: " + newDB.Random();
+    }
+
+    function getCourses() {
+        results.innerText = `Dersin öğrencileri: ${studentId.value}\n\n ${newDB.getCourses(studentId.value)}`;
+    }
+
+    function getBelowGPA() {
+        results.innerText = `Altındaki öğrenciler ${studentGPA.value} gpa\n\n ${newDB.getBelowGPA(studentGPA.value)}`;
+    }
+
+    function getAboveGPA() {
+        results.innerText = `Üstündeki öğrenciler ${studentGPA.value} gpa\n\n ${newDB.getAboveGPA(studentGPA.value)}`;
+    }
+
+    function getExamSchedule() {
+        results.innerText = `Öğrencinin sınav takvimi; ${examSchedule.value} \n ${newDB.getExamSchedule(examSchedule.value)}`;
+    }
+
+    function getStudentsTaking() {
+        results.innerText = `Dersi alan öğrenciler--> ${courseName.value} \n\n ${newDB.getStudentsTaking(courseName.value)}`;
+    }
+
+    function getCoursesForRoom() {
+        results.innerText = `Sınıftaki dersler; ${examRoom.value} \n\n ${newDB.getCoursesForRoom(examRoom.value)}`;
+    }
+
+    function getCourseCount() {
+        results.innerText = `Ders sayısı: ${coursesTotal.value}\n ${newDB.getCourseCount(coursesTotal.value)}`;
+    }
+</script>
+
+</html>
