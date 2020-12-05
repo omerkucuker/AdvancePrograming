@@ -3,8 +3,8 @@
 	"short_name":"JavaScript Practice",
 	"start_url": "/index.html",
 	"display": "standalone",
-	"background_color": "gray",
-	"theme-color":"#ffa",
+	"background_color": "#FFE4C4",
+	"theme-color":"#FFA07A",
 	"icons":[
 		{
 			"src": "images/icon512.png",
