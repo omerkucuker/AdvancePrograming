@@ -1,9 +1,9 @@
 {
 	"name":"JavaScript Practice",
 	"short_name":"JavaScript Practice",
-	"start_url": "index.html",
+	"start_url": "/index.html",
 	"display": "standalone",
-	"background_color": "blue gray",
+	"background_color": "gray",
 	"theme-color":"#ffa",
 	"icons":[
 		{
