@@ -70,6 +70,13 @@
 	 <p>** <a href="https://omerkucuker.github.io/AdvancePrograming/HW2/StudentsDB.html" 
    target=NewTab>HW2 Database and timing </a>
 	</p>
+	<h1>Useful Links</h1>
+     <p>*** <a href="https://www.onurdayibasi.com/javascript-ile-fonksiyonel-programlama/" 
+   target=NewTab>JS ile Fonksiyonel Programlama </a>
+	</p>
+	 <p>*** <a href="https://javascript30.com/" 
+   target=NewTab>JavaScript30 </a>
+	</p>
    
     
   </body>
