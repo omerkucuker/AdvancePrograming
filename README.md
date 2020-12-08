@@ -63,12 +63,18 @@
 	<p>* <a href="https://omerkucuker.github.io/AdvancePrograming/CW%2312/GitHubApi.html" 
    target=NewTab>CW#12  GitHub user API </a>
 	</p>
+	<p>* <a href="http://omerkucuker.github.io/AdvancePrograming/CW%2313/WeatherApi.html" 
+   target=NewTab>CW#13  Weather API </a>
+	</p>
 	<h1>Home Work</h1>
      <p>** <a href="https://omerkucuker.github.io/AdvancePrograming/HW1/Poisson_table.html" 
    target=NewTab>HW1 Poisson Table </a>
 	</p>
-	 <p>** <a href="https://omerkucuker.github.io/AdvancePrograming/HW2/StudentsDB.html" 
+	<p>** <a href="https://omerkucuker.github.io/AdvancePrograming/HW2/StudentsDB.html" 
    target=NewTab>HW2 Database and timing </a>
+	</p>
+	<p>** <a href="https://omerkucuker.github.io/305/anim/Animation.html" 
+   target=NewTab>HW3 Animation </a>
 	</p>
 	<h1>Useful Links</h1>
      <p>*** <a href="https://www.onurdayibasi.com/javascript-ile-fonksiyonel-programlama/" 
