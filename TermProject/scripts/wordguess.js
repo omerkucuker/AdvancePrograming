@@ -1,4 +1,4 @@
-	let url = "https://omerkucuker.github.io/AdvancePrograming/TermProject/words_more.txt";
+	let url = "https://omerkucuker.github.io/AdvancePrograming/TermProject/data/words_more.txt";
 		let wordsLine;
 		let wordMap = new Map();
 		let wordArray = [];
@@ -75,13 +75,11 @@
 			kelimelbl.innerText = inText.split('').join('  ');
 			document.getElementById("harfbtn").style.pointerEvents = "fill";
 			document.getElementById("tahminbtn").style.pointerEvents = "fill";
+			
 			kalanhak.innerText = " " + kalanHak;
 			puanlbl.innerText = " ";
 			sonuc.innerText = " ";
-			var input = document.getElementById("taniminp");
-			input.placeholder = "Tahmin ettiğiniz kelimeyi buraya giriniz..";
-			//document.getElementsByName("tanims").placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..";
-
+			document.getElementById("taniminp").value="";
 		}
 		function prediction(taniminp) {
 
@@ -90,6 +88,8 @@
 
 				if (deger == 0) {
 					sonuc.innerText = " Tebrikler Bildiniz :)";
+					var sound = document.getElementById("audio");
+					sound.play();
 					let kalantire = kelimelbl.innerText.split("-").length - 1;
 					puan = ((kalanHak - 1) * 150) + (kalantire * 100);
 					puanlbl.innerText = " " + puan;
@@ -102,6 +102,11 @@
 					puanlbl.innerText = " 0";
 					kalanHak += -1
 					kalanhak.innerText = " " + kalanHak;
+					var sound = document.getElementById("audiotwo");
+					sound.play();
+					document.getElementById("harfbtn").style.pointerEvents = "none";
+					document.getElementById("tahminbtn").style.pointerEvents = "none";
+					
 				}
 				else {
 					sonuc.innerText = " Malesef Bilemediniz. Büyük-Küçük Harfe Dikkat Edip Tekrar Deneyin !";
@@ -111,6 +116,10 @@
 			} else {
 				sonuc.innerText = " Hakkınız Bitti Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz.Doğru Kelime: " + kelime;
 				puanlbl.innerText = " 0";
+				var sound = document.getElementById("audiotwo");
+				sound.play();
+				document.getElementById("harfbtn").style.pointerEvents = "none";
+				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}
 
 		}
@@ -148,6 +157,10 @@
 			else {
 				sonuc.innerText = " Hakkınız Bitti Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz.Doğru Kelime: " + kelime;
 				puanlbl.innerText = " 0";
+				var sound = document.getElementById("audiotwo");
+				sound.play();
+				document.getElementById("harfbtn").style.pointerEvents = "none";
+				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}
 
 		}

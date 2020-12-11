@@ -5,21 +5,21 @@
 	<meta http-equiv="Content-Type" content="width=device-width" ; charset="UTF-8">
 	<title>Kelime Tahmin Oyunu </title>
 	<link rel="icon" href="https://omerkucuker.github.io/AdvancePrograming/images/icon512.png">
-	<link rel="stylesheet" href="styles.css">
-	<script src="wordguess.js"></script>
+	<link rel="stylesheet" href="./css/styles.css">
+	<script src="./scripts/wordguess.js"></script>
 </head>
 
 <body>
 	<div class="screen">
-
+		<p style="font-size:100%; text-align:center; margin: 0;">Kelime Oyunu</p>
 		<button onclick="hakkinda()" class="hakkinda">Kurallar</button>
 		<br />
 		<span class="label info">Kelimenin Tanımı: </span><label id="tanimlbl">- - - -.</label>
 		<span class="label info">Kelime: </span><label id="kelimelbl">- - - - -.</label>
 		<button onclick="RandomWord()" class="btnKelime">Yeni Oyun</button>
 		<br />
-		<input id="taniminp" type="text" name="tanims" placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..">
-		<br/>
+		<input id="taniminp" type="text" placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..">
+		<br />
 		<button onclick="prediction()" id="tahminbtn" class="btnTahmin">Tahmin Et</button>
 		<button onclick="harfGetir()" id="harfbtn" class="btnHarf">Harf Getir</button>
 		<br />
@@ -30,8 +30,10 @@
 		<span class="label success">Puanınız: </span><label id="puanlbl"> </label>
 
 	</div>
+		<audio id="audio" src="./sounds/applause.wav" autoplay="false" ></audio>
+		<audio id="audiotwo" src="./sounds/SadTrombone.wav" autoplay="false" ></audio> 	 
 
-
+	
 	
 </body>
 
