@@ -39,7 +39,7 @@
 				background-size: cover;
 			background-repeat: no-repeat;
 			position: relative;
-			background-image: url('./images/boardthree.png');
+			background-image: url('../images/boardthree.png');
 		}
 
 		body:after {
