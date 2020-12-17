@@ -261,9 +261,8 @@
             L.tileLayer(u, { attribution }).addTo(MAP)
             let report = () => out.innerText = MAP.getZoom()
             MAP.on('zoom', report); report()
-            MAP.on('click', e => askWeather(document.getElementById("enlem").value=MAP.getCenter().lat,
-            document.getElementById("boylam").value=MAP.getCenter().lng )
-            );
+            MAP.on('click', e => askWeather(document.getElementById("enlem").value=e.latlng.toString().slice(7,15),
+            document.getElementById("boylam").value=e.latlng.toString().slice(18,24) ));
         }
 
         function setview(){
