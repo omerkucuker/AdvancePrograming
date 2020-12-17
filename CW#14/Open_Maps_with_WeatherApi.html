@@ -189,7 +189,12 @@
                 let w = data.weather[0]; showIcon(w.icon)
                 let celsius = convert(data.main.temp).toFixed(0)
                 let hh = w.main + "  " + celsius + "°", { sys } = data
-                let yy = data.name + ', ' + sys.country
+				let x;
+				let m=new Map()
+				let r=await fetch('https://restcountries.eu/rest/v2/all')
+				for (x of await r.json()) m.set(x.alpha2Code, x)
+				let name=m.get(sys.country).name
+                let yy = data.name + ', ' + name
                 hava.innerText = hh; yer.innerText = yy
                 console.log(hh, yy); console.log(sys)
                 lat = data.coord.lat; lon = data.coord.lon
@@ -202,7 +207,8 @@
                 let { sunrise, sunset } = sys, noon = (sunrise + sunset) / 2
                 gunes.innerText = 'Rise ' + toHM(sunrise, 1)
                     + '\nNoon ' + toHM(noon, 1) + '\nSet  ' + toHM(sunset, 1)
-
+				
+				
             }
 
         }
