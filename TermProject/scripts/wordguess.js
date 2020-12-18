@@ -1,4 +1,6 @@
-	let url = "https://omerkucuker.github.io/AdvancePrograming/TermProject/data/words_more.txt";
+		//let url = "https://omerkucuker.github.io/AdvancePrograming/TermProject/data/words_more.txt";
+		let url = "https://raw.githubusercontent.com/calcioo/random-wordlist-tr/master/trlist-orig.txt"
+
 		let wordsLine;
 		let wordMap = new Map();
 		let wordArray = [];
@@ -24,9 +26,9 @@
 		function AddWords(txt) {
 
 			wordsLine = txt.split("\n");
+			wordsLine.shift();
 
-
-			for (let i = 0; i < wordsLine.length - 1; i++) {
+		/*	for (let i = 0; i < wordsLine.length - 1; i++) {
 				//console.log(wordsLine[i]);
 				//console.log(wordsLine[i+1]);
 				let c = new Words();
@@ -40,17 +42,28 @@
 
 				wordMap.set(c.name, c.defin);
 			}
-			wordArray = Array.from(wordMap);
+			wordArray = Array.from(wordMap); */
 			//console.log(wordArray);
 
 		}
-		function RandomWord() {
+		async function RandomWord() {
 			kalanHak = 3;
-			let randomNumber = Math.floor(Math.random() * wordArray.length);
+			/* let randomNumber = Math.floor(Math.random() * wordArray.length);
 			//console.log(randomNumber);
 			tanim = wordArray[randomNumber][1];
 			kelime = wordArray[randomNumber][0];
-			kelime = kelime.slice(0, kelime.length - 1);//kelimenin sonundaki boşluğu sildik
+			kelime = kelime.slice(0, kelime.length - 1);//kelimenin sonundaki boşluğu sildik */
+			
+			let randomNumber = Math.floor(Math.random() * wordsLine.length);
+			kelime = wordsLine[randomNumber];
+			console.log(kelime);
+			let url ="https://sozluk.gov.tr/gts?ara="+kelime;
+			//console.log(url);
+			//let pro = fetch(url).then(response => response.json()).then(result => result[0]).then(data =>data["anlamlarListe"]).then(data => data[0]).then(data => data["anlam"]);
+			let pro = fetch(url).then(response => response.json()).then(result => result[0]["anlamlarListe"][0]["anlam"]);
+			let tanim= await pro;			
+			console.log(tanim);	
+			
 			tanimlbl.innerText = tanim;
 			tanimlbl.style = "font-size: 20px;";
 
@@ -58,8 +71,14 @@
 			//console.log(ranWordNumb);
 			let inText = "";
 			for (let i = 0; i < kelime.length; i++) {
-				if (i == ranWordNumb) {
+				if (i == ranWordNumb && kelime[i] === " ") {					
+					inText += kelime[Math.floor(Math.random() * ((kelime.length) - 1))];
+				}
+				else if(i == ranWordNumb){
 					inText += kelime[ranWordNumb];
+				}
+				else if(kelime[i] == ' '){
+					inText += " , ";
 				}
 				else {
 					inText += "-";
