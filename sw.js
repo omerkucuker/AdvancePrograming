@@ -1,4 +1,6 @@
 const CACHE = "AP";
+const FILES = ['AdvancePrograming/images/icon192', 'AdvancePrograming/TermProject/KelimeTahmin.html']
+
 function installCB(e) {
   console.log(CACHE, e);
 }
