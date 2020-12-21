@@ -22,6 +22,16 @@ function report(req) {
   return req;
 }
 
+function cacheCB(e) { //cache first
+    let req = e.request
+    e.respondWith(
+      caches.match(req)
+      .then(r1 => r1 || fetch(req))
+      .catch(console.log)
+    )
+  }
+  self.addEventListener('fetch', cacheCB)
+
 function fetchCB(e) { //fetch first
   let req = e.request
   e.respondWith(
