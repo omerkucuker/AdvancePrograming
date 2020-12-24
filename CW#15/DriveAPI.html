@@ -14,6 +14,16 @@
         top:8px; right:8px;
         width: 50px;
     }
+    b{
+      border: 1 px;
+      padding: 3px;
+      color: red;
+      cursor: pointer;
+      border: 3px,solid;
+    }
+    b,u{
+      cursor: pointer;
+    }
     pre {
         overflow-x: auto;
         line-height: 1.5;
@@ -168,7 +178,14 @@ async function init() {
     await gapi.auth2.init({ apiKey, clientId, scope })
     if (currentUser().getId()) try {
       showFiles()
-    } catch (e) { error(e) }  
+    } catch (e) { error(e) } 
+    out.onclick = (e) => {
+    let t = e.target
+    if (!t || !t.id) return
+    if (t.tagName == 'B') 
+         removeFile(t.id)
+    else displayFile(t.id)
+    } 
 }
 const ORIGIN = "https://omerkucuker.github.io"
 if (location.host.includes('github') && location.origin != ORIGIN)
