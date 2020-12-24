@@ -46,7 +46,7 @@
 <button id=upload disabled onclick="button.click()">Upload</button>
 &nbsp;<span id=user></span>
 <pre id=out></pre>
-<pre id=data></pre>
+<pre id=datam></pre>
 
 
 <script src="https://apis.google.com/js/api.js"></script>
@@ -108,7 +108,7 @@ function report(response) {
     let a = f.map(fileToString)
     out.innerHTML = a.join('\n'); console.log(f)
     files = f.map(x => x.id+' '+x.name)
-    data.innerText=''
+    datam.innerText=''
 }
 function fileToString(x) {
     let [d, h, m] = x.modifiedTime.split(/[T:]/)
@@ -165,7 +165,7 @@ function removeFile(fileId){
 }
 function displayFile(fileId){
    gapi.client.drive.files.get({fileId, alt: "media"}).then(
-     r=>data.innerText = r.body, error)
+     r=>datam.innerText = r.body, error)
    
 }
 const reader = new FileReader(),
