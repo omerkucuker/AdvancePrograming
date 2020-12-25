@@ -123,6 +123,7 @@
 					kalanhak.innerText = " " + kalanHak;
 					var sound = document.getElementById("audiotwo");
 					sound.play();
+					kelimelbl.innerText=kelime;
 					document.getElementById("harfbtn").style.pointerEvents = "none";
 					document.getElementById("tahminbtn").style.pointerEvents = "none";
 					
@@ -131,12 +132,15 @@
 					sonuc.innerText = " Malesef Bilemediniz. Büyük-Küçük Harfe Dikkat Edip Tekrar Deneyin !";
 					kalanHak += -1
 					kalanhak.innerText = " " + kalanHak;
+					
 				}
 			} else {
 				sonuc.innerText = " Hakkınız Bitti Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz.Doğru Kelime: " + kelime;
 				puanlbl.innerText = " 0";
 				var sound = document.getElementById("audiotwo");
 				sound.play();
+				kelimelbl.innerText=kelime;
+
 				document.getElementById("harfbtn").style.pointerEvents = "none";
 				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}
@@ -178,6 +182,7 @@
 				puanlbl.innerText = " 0";
 				var sound = document.getElementById("audiotwo");
 				sound.play();
+				kelimelbl.innerText=kelime;
 				document.getElementById("harfbtn").style.pointerEvents = "none";
 				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}

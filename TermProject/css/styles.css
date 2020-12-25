@@ -1,7 +1,7 @@
 /*css html,body,body:after given from https://codepen.io/craigiswayne/pen/XmBzzq */
 
 		@import url(https://fonts.googleapis.com/css?family=Walter+Turncoat);
-
+		@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap');
 		html {
 			background: -webkit-linear-gradient(90deg, #485563 10%, #29323c 90%);
 			background: -moz-linear-gradient(90deg, #485563 10%, #29323c 90%);
@@ -18,7 +18,7 @@
 		body {
 			font-size: 40px;
 			color: #E8E8E8;
-			font-family: "Walter Turncoat", cursive;
+			font-family: "Balsamiq Sans", sans-serif;
 			display: block;
 			width: 80%;
 			height: 80%;

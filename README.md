@@ -66,6 +66,12 @@
 	<p>* <a href="http://omerkucuker.github.io/AdvancePrograming/CW%2313/WeatherApi.html" 
    target=NewTab>CW#13  Weather API </a>
 	</p>
+	<p><li><a href="http://omerkucuker.github.io/AdvancePrograming/CW%2314/Open_Maps_with_WeatherApi.html" 
+   target=NewTab>CW#14 OpenMaps with Weather API </li></a>
+	</p>
+	<p><li><a href="http://omerkucuker.github.io/AdvancePrograming/CW%2315/DriveAPI.html"
+   target=NewTab>CW#15 Write the Cloud </li></a>
+	</p>
 	<h1>Home Work</h1>
      <p>** <a href="https://omerkucuker.github.io/AdvancePrograming/HW1/Poisson_table.html" 
    target=NewTab>HW1 Poisson Table </a>
