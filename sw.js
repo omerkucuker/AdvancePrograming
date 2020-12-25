@@ -10,7 +10,7 @@ function installCB(e) {
 }
 addEventListener('install', installCB)
 
-async function save(req, resp) {
+function save(req, resp) {
   if (!req.url.includes("github")) 
      return resp;
   return caches.open(CACHE)
