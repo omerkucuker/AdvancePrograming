@@ -60,7 +60,12 @@
 			let url ="https://sozluk.gov.tr/gts?ara="+kelime;
 			//console.log(url);
 			//let pro = fetch(url).then(response => response.json()).then(result => result[0]).then(data =>data["anlamlarListe"]).then(data => data[0]).then(data => data["anlam"]);
-			let pro = fetch(url).then(response => response.json()).then(result => result[0]["anlamlarListe"][0]["anlam"]);
+			//let pro = fetch(url).then(response => response.json()).then(result => result[0]["anlamlarListe"][0]["anlam"]);
+			let pro=fetch(url).then(response => response.json()).then(result => 
+			result[0]["anlamlarListe"][0]["anlam"]
+			).catch((error) => {
+				RandomWord();
+			});
 			let tanim= await pro;			
 			console.log(tanim);	
 			
@@ -78,7 +83,7 @@
 					inText += kelime[ranWordNumb];
 				}
 				else if(kelime[i] == ' '){
-					inText += " , ";
+					inText += "\xa0";
 				}
 				else {
 					inText += "-";
