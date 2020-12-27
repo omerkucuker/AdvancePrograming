@@ -56,7 +56,7 @@
 			
 			let randomNumber = Math.floor(Math.random() * wordsLine.length);
 			kelime = wordsLine[randomNumber];
-			console.log(kelime);
+			//console.log(kelime);
 			let url ="https://sozluk.gov.tr/gts?ara="+kelime;
 			//console.log(url);
 			//let pro = fetch(url).then(response => response.json()).then(result => result[0]).then(data =>data["anlamlarListe"]).then(data => data[0]).then(data => data["anlam"]);
@@ -67,7 +67,7 @@
 				RandomWord();
 			});
 			let tanim= await pro;			
-			console.log(tanim);	
+			//console.log(tanim);	
 			
 			tanimlbl.innerText = tanim;
 			tanimlbl.style = "font-size: 20px;";
