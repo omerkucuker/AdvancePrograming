@@ -98,11 +98,11 @@
 		}
 
 		.btnHarf {
-			pointer-events: none;
+			visibility:hidden;
 		}
 
 		.btnTahmin {
-			pointer-events: none;
+			visibility:hidden;
 		}
 
 		.hakkinda {

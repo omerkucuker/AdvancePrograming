@@ -8,6 +8,14 @@
 		let puan;
 		let tanim;
 		let kelime;
+		
+		
+		function runScript(e) {
+			if (e.keyCode == 13) {
+				document.getElementById("tahminbtn").click();
+			}
+		}
+		
 		class Words {
 			constructor(name, defin) {
 				this.name = name;
@@ -97,16 +105,23 @@
 			}
 			inText += "."
 			kelimelbl.innerText = inText.split('').join('  ');
+			document.getElementById("harfbtn").style.visibility = "visible";
+			document.getElementById("tahminbtn").style.visibility = "visible";
 			document.getElementById("harfbtn").style.pointerEvents = "fill";
 			document.getElementById("tahminbtn").style.pointerEvents = "fill";
-			
+			document.getElementById("harfbtn").style.opacity = "1";
+			document.getElementById("harfbtn").style.cursor = "pointer";
+
+			document.getElementById("tahminbtn").style.opacity = "1";
+			document.getElementById("tahminbtn").style.cursor = "pointer";
+			document.getElementById("taniminp").focus();
 			kalanhak.innerText = " " + kalanHak;
 			puanlbl.innerText = " ";
 			sonuc.innerText = " ";
 			document.getElementById("taniminp").value="";
 		}
 		function prediction(taniminp) {
-
+		
 			if (kalanHak != 0) {
 				var deger = kelime.localeCompare(document.getElementById("taniminp").value);
 
@@ -117,41 +132,58 @@
 					let kalantire = kelimelbl.innerText.split("-").length - 1;
 					puan = ((kalanHak - 1) * 150) + (kalantire * 100);
 					puanlbl.innerText = " " + puan;
+					document.getElementById("harfbtn").style.opacity = "0.6";
+					document.getElementById("harfbtn").style.cursor = "not-allowed";
+					document.getElementById("tahminbtn").style.opacity = "0.6";
+					document.getElementById("tahminbtn").style.cursor = "not-allowed";
 					document.getElementById("harfbtn").style.pointerEvents = "none";
+					document.getElementById("tahminbtn").style.pointerEvents = "none";
 					kalanHak += -1
 					kalanhak.innerText = " " + kalanHak;
 
 				} else if (deger != 0 && kalanHak == 1) {
-					sonuc.innerText = "Son Hakkında Da Bilemedin. Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz. Doğru Kelime: " + kelime;
+					sonuc.innerText = "Bilemediniz. Doğru Kelime: " + kelime;
 					puanlbl.innerText = " 0";
 					kalanHak += -1
 					kalanhak.innerText = " " + kalanHak;
 					var sound = document.getElementById("audiotwo");
 					sound.play();
 					kelimelbl.innerText=kelime;
+					document.getElementById("harfbtn").style.opacity = "0.6";
+					document.getElementById("harfbtn").style.cursor = "not-allowed";
+
+					document.getElementById("tahminbtn").style.opacity = "0.6";
+					document.getElementById("tahminbtn").style.cursor = "not-allowed";
 					document.getElementById("harfbtn").style.pointerEvents = "none";
 					document.getElementById("tahminbtn").style.pointerEvents = "none";
 					
 				}
 				else {
-					sonuc.innerText = " Malesef Bilemediniz. Büyük-Küçük Harfe Dikkat Edip Tekrar Deneyin !";
+					sonuc.innerText = " Bilemediniz. Büyük-Küçük Harfe Dikkat Edip Tekrar Deneyin !";
 					kalanHak += -1
 					kalanhak.innerText = " " + kalanHak;
 					
 				}
 			} else {
-				sonuc.innerText = " Hakkınız Bitti Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz.Doğru Kelime: " + kelime;
+				sonuc.innerText = " Bilemediniz. Doğru Kelime: " + kelime;
 				puanlbl.innerText = " 0";
 				var sound = document.getElementById("audiotwo");
 				sound.play();
 				kelimelbl.innerText=kelime;
 
+				document.getElementById("harfbtn").style.opacity = "0.6";
+				document.getElementById("harfbtn").style.cursor = "not-allowed";
+
+				document.getElementById("tahminbtn").style.opacity = "0.6";
+				document.getElementById("tahminbtn").style.cursor = "not-allowed";
 				document.getElementById("harfbtn").style.pointerEvents = "none";
 				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}
 
 		}
-
+		
+		
+		
 		String.prototype.replaceAt = function (index, replacement) {
 			return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 		}
@@ -168,7 +200,13 @@
 				}
 				else if (inText.search("-") == -1) {
 					sonuc.innerText = " tüm harfler getirildi.";
+					document.getElementById("harfbtn").style.opacity = "0.6";
+					document.getElementById("harfbtn").style.cursor = "not-allowed";
+					document.getElementById("tahminbtn").style.opacity = "0.6";
+					document.getElementById("tahminbtn").style.cursor = "not-allowed";
+					
 					document.getElementById("harfbtn").style.pointerEvents = "none";
+					document.getElementById("tahminbtn").style.pointerEvents = "none";
 					puanlbl.innerText = " 0";
 
 				}
@@ -183,11 +221,16 @@
 				kelimelbl.innerText = inText.split('').join('  ');
 			}
 			else {
-				sonuc.innerText = " Hakkınız Bitti Yeni Oyun Butonuna Basarak Yeni Oyun Başlatabilirsiniz.Doğru Kelime: " + kelime;
+				sonuc.innerText = " Hakkınız bitti. Doğru Kelime: " + kelime;
 				puanlbl.innerText = " 0";
 				var sound = document.getElementById("audiotwo");
 				sound.play();
 				kelimelbl.innerText=kelime;
+				document.getElementById("harfbtn").style.opacity = "0.6";
+				document.getElementById("harfbtn").style.cursor = "not-allowed";
+
+				document.getElementById("tahminbtn").style.opacity = "0.6";
+				document.getElementById("tahminbtn").style.cursor = "not-allowed";
 				document.getElementById("harfbtn").style.pointerEvents = "none";
 				document.getElementById("tahminbtn").style.pointerEvents = "none";
 			}
@@ -195,12 +238,12 @@
 		}
 
 
-		function hakkinda() {
+		/*function hakkinda() {
 			var kurallarWindow = window.open("", "Oyun Kuralları", "toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=70,width=400,height=400");
 			//kurallarWindow.windowName ="Oyun Kuralları";
 			kurallarWindow.document.write(
 				"<p>•	Yeni kelime butonuna basıldığında rastgele bir kelime seçilir ve altı harften küçükse bir tane harf,  büyük veya eşitse iki harfi rastgele gösterilir. Kelimenin anlamı kelimenin tanımında gösterilir. Kalan hak sıfırlanır.</p><p>•	Harf getir butonuna her basıldığında açılmayan harflerden rastgele bir tanesi açılır.</p><p>•	Tahmin edilen kelime text alanına girilip Tahmin Et butonuna basılır, Sonuç kısmının yanında sonuç gözükür.</p><p> •	Oyuncunun 3 defa tahmin etme hakkı vardır.</p><p>•	Puanlama; (Gözükmeyen harf sayısı x 100)+ (Kalan Hak x 150)</p>");
 
-		}
+		}*/
 
 		ReadWords(url);

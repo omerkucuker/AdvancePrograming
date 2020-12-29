@@ -11,18 +11,17 @@
 
 <body>
 	<div class="screen">
-		<p style="font-size:100%; text-align:center; margin: 0;">Kelime Oyunu</p>
-		<button onclick="hakkinda()" class="hakkinda">Kurallar</button>
+		<p style="font-size:100%; text-align:center; margin: 0; color:orange;">Kelime Oyunu</p>
+		<button onclick="window.location.href='./kurallarPage.html' " class="hakkinda">Kurallar</button>
 		<br />
 		<span class="label info">Kelimenin Tanımı: </span><label id="tanimlbl">- - - -.</label>
 		<br/>
 		<span class="label info">Kelime: </span><label id="kelimelbl">- - - - -.</label>
 		<button onclick="RandomWord()" class="btnKelime">Yeni Oyun</button>
 		<br />
-		<input id="taniminp" type="text" placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..">
+		<input id="taniminp" onkeypress="runScript(event)" type="text" placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..">
 		<br />
-		<button onclick="prediction()" id="tahminbtn" class="btnTahmin">Tahmin Et</button>
-		<br />
+		<button onclick="prediction()" type="submit" id="tahminbtn" class="btnTahmin">Tahmin Et</button>
 		<button onclick="harfGetir()" id="harfbtn" class="btnHarf">Harf Getir</button>
 		<br />
 		<span class="label success">Kalan Hakkınız: </span><label id="kalanhak"> </label>
@@ -36,7 +35,8 @@
 		<audio id="audiotwo" src="https://omerkucuker.github.io/AdvancePrograming/sounds/SadTrombone.wav"  ></audio> 	 
 
 	
-	
+	<p style="font-size:30%; color: orange;">Ömer Faruk Küçüker 2020</p>
 </body>
+	
 
 </html>
