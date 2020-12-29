@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html>
-
+<style>
+li{
+font-size:45%;
+}
+</style>
 <head>
-	<meta http-equiv="Content-Type" name="viewport" content="width=device-width" ; charset="UTF-8">
+	<meta http-equiv="Content-Type" name="viewport "content="width=device-width,initial-scale=1:1" ; charset="UTF-8">
 	<title>Kelime Tahmin Oyunu </title>
-	<link rel="icon" sizes="192x192" href="../images/icon192.png">
+	
 	<link rel="stylesheet" href="./css/styles.css">
 	<script src="./scripts/wordguess.js"></script>
 </head>
 
 <body>
 	<div class="screen">
-		<p style="font-size:100%; text-align:center; margin: 0; color:orange;">Kelime Oyunu</p>
-		<button onclick="window.location.href='./kurallarPage.html' " class="hakkinda">Kurallar</button>
-		<br />
-		<span class="label info">Kelimenin Tanımı: </span><label id="tanimlbl">- - - -.</label>
-		<br/>
-		<span class="label info">Kelime: </span><label id="kelimelbl">- - - - -.</label>
-		<button onclick="RandomWord()" class="btnKelime">Yeni Oyun</button>
-		<br />
-		<button onclick="prediction()" type="submit" id="tahminbtn" class="btnTahmin">Tahmin Et</button>
-		<button onclick="harfGetir()" id="harfbtn" class="btnHarf">Harf Getir</button>
-		<br />
-		<input id="taniminp" onkeypress="runScript(event)" type="text" placeholder="Tahmin ettiğiniz kelimeyi buraya giriniz..">
-		<br />
-		<span class="label success">Kalan Hakkınız: </span><label id="kalanhak"> </label>
-		<br />
-		<span class="label success">Sonuç: </span> <label id="sonuc"></label>
-		<br />
-		<span class="label success">Puanınız: </span><label id="puanlbl"> </label>
+		<p style="font-size:100%; text-align:center; margin: 0; color:orange">Kelime Oyunu</p>
+		<p style="font-size:70%; color:orange; text-align:center;">Kurallar</p>
+		<li>Yeni kelime butonuna basıldığında rastgele bir kelime seçilir ve altı harften küçükse bir tane harf,  büyük veya eşitse iki harfi rastgele gösterilir. Kelimenin anlamı kelimenin tanımında gösterilir. Kalan hak sıfırlanır.</li>
+		<li>Harf getir butonuna her basıldığında açılmayan harflerden rastgele bir tanesi açılır.</li>
+		<li>Tahmin edilen kelime text alanına girilip Tahmin Et butonuna basılır, Sonuç kısmının yanında sonuç gözükür.</li>
+		<li>Oyuncunun 3 defa tahmin etme hakkı vardır.</li>
+		<li>Puanlama; (Gözükmeyen harf sayısı x 100)+ (Kalan Hak x 150)</li>
+		<button onclick="window.location.href='./KelimeTahmin.html';" style="float:center; width: 100%; height:40px;" class="hakkinda">Oyunu Başlat</button>
+
+
 
 	</div>
-		<audio id="audio" src="https://omerkucuker.github.io/AdvancePrograming/sounds/applause.wav"  ></audio>
-		<audio id="audiotwo" src="https://omerkucuker.github.io/AdvancePrograming/sounds/SadTrombone.wav"  ></audio> 	 
+		 
+
+	<p style="font-size:30%; color: orange;">Ömer Faruk Küçüker 2020</p>
 
 	
-	<p style="font-size:30%; color: orange;">Ömer Faruk Küçüker 2020</p>
 </body>
-	
 
 </html>
