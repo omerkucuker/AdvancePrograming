@@ -247,3 +247,4 @@
 		}*/
 
 		ReadWords(url);
+		setTimeout(RandomWord,1000);
