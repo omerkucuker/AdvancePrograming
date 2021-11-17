@@ -6,6 +6,8 @@ let studentId = 0
 let homeworkId = 0
 
 let paramHw = 0 //due to error on onChangeDt2()
+
+
 class Homework {
 
     constructor(homework_id, homework_name, title, date, students = []) {
@@ -66,10 +68,15 @@ class trackingPlatform {
         else if(isNaN(teacherId))
             alert("Given Id is not a number. Try another one!")
         else{}*/
-        let newTeacher = new Teacher(teacherId++, document.getElementById("teacher_name").value);
-        teacherList.push(newTeacher);
-        createDropdownTeacher();
-        return newTeacher;
+        if (document.getElementById("teacher_name").value == null) {
+            alert("Null Value")
+        } else {
+            let newTeacher = new Teacher(teacherId++, document.getElementById("teacher_name").value);
+            teacherList.push(newTeacher);
+            createDropdownTeacher();
+            return newTeacher;
+        }
+
 
 
 
@@ -82,16 +89,22 @@ class trackingPlatform {
         else if(isNaN(paramId))
             alert("Given Id is not a number. Try another one!")
         else{}*/
-        let newStudent = new Student(studentId++, document.getElementById("student_name").value);
-        studentList.push(newStudent);
-        createDropdownStudent();
-        return newStudent
-
+        if (document.getElementById("student_name").value == null) {
+            alert("Null Value")
+        } else {
+            let newStudent = new Student(studentId++, document.getElementById("student_name").value);
+            studentList.push(newStudent);
+            createDropdownStudent();
+            return newStudent
+        }
 
     }
 
     giveHomework() {
-        teacherList[paramHw].addHomework(homeworkId,
+        if(studentList[onChangeDs2()] == null)
+            alert("Fill in the required information")
+        else
+            teacherList[paramHw].addHomework(homeworkId,
             document.getElementById("homework_name").value,
             document.getElementById("title").value,
             document.getElementById("date").value,
@@ -208,6 +221,31 @@ function onChangeDh2() {
     return strUser;
 }
 
+function onChangeDp() {
+    if (document.getElementById("personlist").value == "admin") {
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("adminMenu").style.visibility = "visible";
+    }
+    else if (document.getElementById("personlist").value == "teachers") {
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "visible";
+        document.getElementById("teacherMenu").style.position = "absolute";
+        document.getElementById("teacherMenu").style.top = "300px";
+
+
+    }
+    else {
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "visible";
+        document.getElementById("studentMenu").style.position = "absolute";
+        document.getElementById("studentMenu").style.top = "300px";
+    }
+
+}
+
 function isIdInTeacherList() {
     var flag = false
     teacherList[onChangeDt()].students.forEach(element => {
@@ -218,35 +256,46 @@ function isIdInTeacherList() {
     return flag;
 }
 
-function submission(){ //ref: https://www.w3schools.com/jsref/prop_fileupload_files.asp
+function submission() { //ref: https://www.w3schools.com/jsref/prop_fileupload_files.asp
     var x = document.getElementById("myFile");
     var txt = "";
     if ('files' in x) {
-      if (x.files.length == 0) {
-        txt = "Select one or more files.";
-      } else {
-        for (var i = 0; i < x.files.length; i++) {
-          txt += "<br><strong>" + (i+1) + ". file</strong><br>";
-          var file = x.files[i];
-          if ('name' in file) {
-            txt += "name: " + file.name + "<br>";
-          }
-          if ('size' in file) {
-            txt += "size: " + file.size + " bytes <br>";
-          }
+        if (x.files.length == 0) {
+            txt = "Select one or more files.";
+        } else {
+            for (var i = 0; i < x.files.length; i++) {
+                txt += "<br><strong>" + (i + 1) + ". file</strong><br>";
+                var file = x.files[i];
+                if ('name' in file) {
+                    txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                    txt += "size: " + file.size + " bytes <br>";
+                }
+            }
         }
-      }
-    } 
+    }
     else {
-      if (x.value == "") {
-        txt += "Select one or more files.";
-      } else {
-        txt += "The files property is not supported by your browser!";
-        txt  += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
-      }
+        if (x.value == "") {
+            txt += "Select one or more files.";
+        } else {
+            txt += "The files property is not supported by your browser!";
+            txt += "<br>The path of the selected file: " + x.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+        }
     }
     document.getElementById("pFileUpload").innerHTML = txt;
-  }
+}
+
+function loginCheck() {
+    //location.href = "index.html";    
+    if (document.getElementById("username_id").value === "admin" &&
+        document.getElementById("psw").value == "1234")
+        location.href = "index.html";
+    else
+        alert("user/password incorrect")
+};
+
+
 
 /*function isIdInStudentList() {
     var flag = false

@@ -139,3 +139,7 @@
 		h2{
 			color: antiquewhite;
 		}
+
+		.otherMenu{
+			visibility: hidden;
+		}

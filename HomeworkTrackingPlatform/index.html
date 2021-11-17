@@ -17,67 +17,90 @@
 
 <body onload="submission()">
 
-    <h1>Welcome to Homework Tracking Platform</h1>
+    <div class="mainMenu" id="mainMenu">
+        <h1>Welcome to Homework Tracking Platform</h1>
 
+        <h2>Who Are You</h2>
+        <label for="personlist">Teacher List:</label>
+        <div class="select">
+            <select id="personlist" onchange="onChangeDp()">
+                <option value="admin">Admin</option>
+                <option value="teachers">Teachers</option>
+                <option value="students">Student</option>
+            </select>
+        </div>
 
-    <h2>Add Teachers</h2>
-
-    <label for="teacher_name">Teacher name:</label>
-    <input type="text" id="teacher_name" name="ftname"><br>
-    <button onclick="tp.addTeacher()">Add New Teacher</button> 
-
-    <h2>Add Students</h2>
-
-    <label for="student_name">Student name:</label>
-    <input type="text" id="student_name" name="fsname"><br>
-    <button onclick="tp.addStudent()">Add New Student</button><br><br>
-
-    <h2>Add Student to Teacher</h2>
-    <label for="teacher_list">Teacher List:</label>
-    <div class="select">
-        <select id="DdTeacherList" onchange="onChangeDt()"></select>
-    </div>
-    <label for="student_list">Student List:</label>
-    <div class="select">
-        <select id="DdStudentList" onchange="onChangeDs()"></select>
-    </div><br>
-    <button onclick="tp.associate()">Associate</button><br><br>
-
-    <h2>Add Homework</h2>
-    <label for="teacher_list">Teacher List:</label>
-    <div class="select">
-        <select id="DdTeacherList2" onchange="onChangeDt2()"></select>
     </div>
 
-    <label for="student_list">Student List:</label>
-    <div class="select">
-        <select id="DdStudentList2" onchange="onChangeDs2()"></select><br><br>
+    <div class="otherMenu" id="otherMenu">
+        <div class="adminMenu" id="adminMenu">
+            <h2>Add Teachers</h2>
+
+            <label for="teacher_name">Teacher name:</label>
+            <input type="text" id="teacher_name" name="ftname"><br>
+
+            <button onclick="tp.addTeacher()">Add New Teacher</button>
+
+            <h2>Add Students</h2>
+
+            <label for="student_name">Student name:</label>
+            <input type="text" id="student_name" name="fsname"><br>
+            <button onclick="tp.addStudent()">Add New Student</button><br><br>
+
+            <h2>Add Student to Teacher</h2>
+            <label for="teacher_list">Teacher List:</label>
+            <div class="select">
+                <select id="DdTeacherList" onchange="onChangeDt()"></select>
+            </div>
+            <label for="student_list">Student List:</label>
+            <div class="select">
+                <select id="DdStudentList" onchange="onChangeDs()"></select>
+            </div><br>
+            <button onclick="tp.associate()">Associate</button><br><br>
+        </div>
+
+        <div class="teacherMenu" id="teacherMenu">
+            <h2>Add Homework</h2>
+            <label for="teacher_list">Teacher List:</label>
+            <div class="select">
+                <select id="DdTeacherList2" onchange="onChangeDt2()"></select>
+            </div>
+
+            <label for="student_list">Student List:</label>
+            <div class="select">
+                <select id="DdStudentList2" onchange="onChangeDs2()"></select><br><br>
+            </div>
+
+            <label for="homework_name">Homework name:</label>
+            <input type="text" id="homework_name" name="fhname"><br><br>
+            <label for="title">Title :</label>
+            <input type="text" id="title" name="fhtitle"><br><br>
+            <label for="title">Date :</label>
+            <input type="text" id="date" name="fhdate"><br><br>
+            <button onclick="tp.giveHomework()">Add New Homework</button><br><br>
+            <label for="homework_list">Homework List:</label>
+            <div class="select">
+                <select id="DdHomeWorkList" onchange="onChangeDh()"></select>
+            </div>
+        </div>
+
+        <div class="studentMenu" id="studentMenu">
+            <h2>Homework Submission</h2>
+            <label label for="student_list3">Student List:</label>
+            <div class="select">
+                <select id="DdStudentList3" onchange="onChangeDs3()"></select>
+            </div>
+            <label for="homework_list2">Student's HW List:</label>
+            <div class="select">
+                <select id="DdHomeWorkList2" onchange="onChangeDh2()"></select><br><br>
+            </div><br>
+
+            <input type="file" id="myFile" multiple size="50" onchange="submission()">
+            <p id="pFileUpload"></p>
+        </div>
+
     </div>
 
-    <label for="homework_name">Homework name:</label>
-    <input type="text" id="homework_name" name="fhname"><br><br>
-    <label for="title">Title :</label>
-    <input type="text" id="title" name="fhtitle"><br><br>
-    <label for="title">Date :</label>
-    <input type="text" id="date" name="fhdate"><br><br>
-    <button onclick="tp.giveHomework()">Add New Homework</button><br><br>
-    <label for="homework_list">Homework List:</label>
-    <div class="select">
-        <select id="DdHomeWorkList" onchange="onChangeDh()"></select>
-    </div>
-
-    <h2>Homework Submission</h2>
-    <label label for="student_list3">Student List:</label>
-    <div class="select">
-        <select id="DdStudentList3" onchange="onChangeDs3()"></select>
-    </div>
-    <label for="homework_list2">Student's HW List:</label>
-    <div class="select">
-        <select id="DdHomeWorkList2" onchange="onChangeDh2()"></select><br><br>
-    </div><br>
-
-    <input type="file" id="myFile" multiple size="50" onchange="submission()">
-    <p id="pFileUpload"></p>
 
 </body>
 
