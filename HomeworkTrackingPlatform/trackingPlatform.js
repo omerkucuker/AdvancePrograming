@@ -232,7 +232,7 @@ function onChangeDp() {
         document.getElementById("studentMenu").style.visibility = "hidden";
         document.getElementById("teacherMenu").style.visibility = "visible";
         document.getElementById("teacherMenu").style.position = "absolute";
-        document.getElementById("teacherMenu").style.top = "300px";
+        document.getElementById("teacherMenu").style.top = "390px";
 
 
     }
@@ -241,7 +241,7 @@ function onChangeDp() {
         document.getElementById("teacherMenu").style.visibility = "hidden";
         document.getElementById("studentMenu").style.visibility = "visible";
         document.getElementById("studentMenu").style.position = "absolute";
-        document.getElementById("studentMenu").style.top = "300px";
+        document.getElementById("studentMenu").style.top = "390px";
     }
 
 }
