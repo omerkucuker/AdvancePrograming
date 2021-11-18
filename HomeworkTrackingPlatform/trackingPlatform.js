@@ -120,7 +120,7 @@ class trackingPlatform {
             alert("This teacher and student are associated")
         } else {
             teacherList[onChangeDt()].students.push(studentList[onChangeDs()])
-            studentList[onChangeDt()].teachers.push(teacherList[onChangeDs()])
+            studentList[onChangeDs()].teachers.push(teacherList[onChangeDt()])
         }
 
     }
@@ -136,6 +136,17 @@ function createDropdownTeacher() {
 
     }
     document.getElementById("DdTeacherList").innerHTML = option;
+    //document.getElementById("DdTeacherList2").innerHTML = option;
+
+}
+
+function createDropdownTeacher2(teachers) {
+    var option = "";
+    for (var i = 0; i < teachers.length; i++) {
+        option += '<option value="' + teachers[i].teacher_id + '">' + teachers[i].teacher_name + "</option>"
+
+    }
+    document.getElementById("DdTeacherList3").innerHTML = option;
     //document.getElementById("DdTeacherList2").innerHTML = option;
 
 }
@@ -272,6 +283,7 @@ function loginCheck() {
         document.getElementById("studentMenu").style.top = "200px";
         let returnStudentId = idStudentByName(username_input, password_input)
         createDropdownHomework2(studentList[returnStudentId].homeworks)
+        createDropdownTeacher2(studentList[returnStudentId].teachers)
         document.getElementById("login_student_name").innerHTML = "Student name: "+username_input
 
     }
