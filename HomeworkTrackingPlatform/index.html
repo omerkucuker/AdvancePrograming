@@ -16,9 +16,22 @@
 </head>
 
 <body onload="submission()">
+    <h1>Welcome to Homework Tracking Platform</h1>
 
-    <div class="mainMenu" id="mainMenu">
-        <h1>Welcome to Homework Tracking Platform</h1>
+    <div class="container" id="loginMenu">
+        <h2>Login Form</h2>
+        <label for="lusername"><b>Username</b></label>
+        <input id="username_id" type="text" placeholder="Enter Username" name="uname" required>
+        <br>
+        <label for="psw"><b>Password</b></label>
+        <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+        <br>
+        <button id="loginButton" onclick="loginCheck()">Login</button>
+
+    </div>
+
+
+    <!--<div class="mainMenu" id="mainMenu">
 
         <h2>Who Are You</h2>
         <label for="personlist">Teacher List:</label>
@@ -30,21 +43,26 @@
             </select>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="otherMenu" id="otherMenu">
         <div class="adminMenu" id="adminMenu">
+            <button onclick="backToMainPage()">Back To Home Page</button>
+
             <h2>Add Teachers</h2>
 
             <label for="teacher_name">Teacher name:</label>
             <input type="text" id="teacher_name" name="ftname"><br>
-
+            <label for="password_teacher">Password:</label>
+            <input id="password_teacher" type="password" name="ftpassword"><br>
             <button onclick="tp.addTeacher()">Add New Teacher</button>
 
             <h2>Add Students</h2>
 
             <label for="student_name">Student name:</label>
             <input type="text" id="student_name" name="fsname"><br>
+            <label for="password_student">Password:</label>
+            <input id="password_student" type="password" name="ftpassword"><br>
             <button onclick="tp.addStudent()">Add New Student</button><br><br>
 
             <h2>Add Student to Teacher</h2>
@@ -60,12 +78,14 @@
         </div>
 
         <div class="teacherMenu" id="teacherMenu">
+            <button onclick="backToMainPage()">Back To Home Page</button>
+
             <h2>Add Homework</h2>
-            <label for="teacher_list">Teacher List:</label>
+            <!--<label for="teacher_list">Teacher List:</label>
             <div class="select">
                 <select id="DdTeacherList2" onchange="onChangeDt2()"></select>
-            </div>
-
+            </div> -->
+            <label id="login_teacher_name"></label><br>
             <label for="student_list">Student List:</label>
             <div class="select">
                 <select id="DdStudentList2" onchange="onChangeDs2()"></select><br><br>
@@ -78,18 +98,22 @@
             <label for="title">Date :</label>
             <input type="text" id="date" name="fhdate"><br><br>
             <button onclick="tp.giveHomework()">Add New Homework</button><br><br>
-            <label for="homework_list">Homework List:</label>
+            <!--<label for="homework_list">Homework List:</label>
             <div class="select">
                 <select id="DdHomeWorkList" onchange="onChangeDh()"></select>
-            </div>
+            </div> -->
         </div>
 
         <div class="studentMenu" id="studentMenu">
+            <button onclick="backToMainPage()">Back To Home Page</button>
+
             <h2>Homework Submission</h2>
-            <label label for="student_list3">Student List:</label>
+            <label id="login_student_name"></label><br>
+
+            <!--<label label for="student_list3">Student List:</label>
             <div class="select">
                 <select id="DdStudentList3" onchange="onChangeDs3()"></select>
-            </div>
+            </div> -->
             <label for="homework_list2">Student's HW List:</label>
             <div class="select">
                 <select id="DdHomeWorkList2" onchange="onChangeDh2()"></select><br><br>

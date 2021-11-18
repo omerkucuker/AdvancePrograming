@@ -14,21 +14,14 @@
 			background-color: #497959;
 			padding: 20px 30px;
 			overflow-y: auto;
-			box-shadow: -1px 2px 2px 0px #555, inset 0 0 10px 0 #555;
-			-webkit-border-radius: 10px;
-			-khtml-border-radius: 10px;
-			-moz-border-radius: 10px;
-			-ms-border-radius: 10px;
-			-o-border-radius: 10px;
-			border-radius: 10px;
-			border: #B78240 solid 10px;
-			background-repeat: no-repeat;
+			overflow-x: auto;
+			
 		}
 
 		body:after {
 			content: "";
 			display: block;
-			position: fixed;
+			position: absolute;
 			-webkit-border-radius: 0.1em 0.1em 0 0.1em;
 			-khtml-border-radius: 0.1em 0.1em 0 0.1em;
 			-moz-border-radius: 0.1em 0.1em 0 0.1em;
@@ -141,5 +134,9 @@
 		}
 
 		.otherMenu{
+			visibility: hidden;
+		}
+
+		.mainMenu{
 			visibility: hidden;
 		}

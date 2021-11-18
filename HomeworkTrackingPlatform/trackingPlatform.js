@@ -24,9 +24,10 @@ class Homework {
     }
 }
 class Teacher {
-    constructor(teacher_id, teacher_name, students = []) {
+    constructor(teacher_id, teacher_name, password_teacher, students = []) {
         this.teacher_id = teacher_id;
         this.teacher_name = teacher_name;
+        this.password_teacher = password_teacher;
         this.students = students;
     }
 
@@ -44,9 +45,10 @@ class Teacher {
 
 class Student {
 
-    constructor(student_id, student_name, homeworks = [], teachers = []) {
+    constructor(student_id, student_name, password_student, homeworks = [], teachers = []) {
         this.student_id = student_id;
         this.student_name = student_name;
+        this.password_student = password_student
         this.homeworks = homeworks;
         this.teachers = teachers;
     }
@@ -71,7 +73,8 @@ class trackingPlatform {
         if (document.getElementById("teacher_name").value == null) {
             alert("Null Value")
         } else {
-            let newTeacher = new Teacher(teacherId++, document.getElementById("teacher_name").value);
+            let newTeacher = new Teacher(teacherId++, document.getElementById("teacher_name").value,
+                document.getElementById("password_teacher").value);
             teacherList.push(newTeacher);
             createDropdownTeacher();
             return newTeacher;
@@ -92,7 +95,8 @@ class trackingPlatform {
         if (document.getElementById("student_name").value == null) {
             alert("Null Value")
         } else {
-            let newStudent = new Student(studentId++, document.getElementById("student_name").value);
+            let newStudent = new Student(studentId++, document.getElementById("student_name").value,
+                document.getElementById("password_student").value);
             studentList.push(newStudent);
             createDropdownStudent();
             return newStudent
@@ -101,14 +105,14 @@ class trackingPlatform {
     }
 
     giveHomework() {
-        if(studentList[onChangeDs2()] == null)
+        if (studentList[onChangeDs2()] == null)
             alert("Fill in the required information")
         else
             teacherList[paramHw].addHomework(homeworkId,
-            document.getElementById("homework_name").value,
-            document.getElementById("title").value,
-            document.getElementById("date").value,
-            studentList[onChangeDs2()])
+                document.getElementById("homework_name").value,
+                document.getElementById("title").value,
+                document.getElementById("date").value,
+                studentList[onChangeDs2()])
     }
 
     associate() {
@@ -132,7 +136,7 @@ function createDropdownTeacher() {
 
     }
     document.getElementById("DdTeacherList").innerHTML = option;
-    document.getElementById("DdTeacherList2").innerHTML = option;
+    //document.getElementById("DdTeacherList2").innerHTML = option;
 
 }
 
@@ -143,7 +147,7 @@ function createDropdownStudent() {
 
     }
     document.getElementById("DdStudentList").innerHTML = option;
-    document.getElementById("DdStudentList3").innerHTML = option;
+    //document.getElementById("DdStudentList3").innerHTML = option;
 
 
 }
@@ -164,7 +168,7 @@ function createDropdownHomework() {
         option += '<option value="' + homeworkList[i].homework_name + '">' + homeworkList[i].homework_name + "</option>"
 
     }
-    document.getElementById("DdHomeWorkList").innerHTML = option;
+    //document.getElementById("DdHomeWorkList").innerHTML = option;
 }
 
 function createDropdownHomework2(homeworkList) {
@@ -221,30 +225,7 @@ function onChangeDh2() {
     return strUser;
 }
 
-function onChangeDp() {
-    if (document.getElementById("personlist").value == "admin") {
-        document.getElementById("studentMenu").style.visibility = "hidden";
-        document.getElementById("teacherMenu").style.visibility = "hidden";
-        document.getElementById("adminMenu").style.visibility = "visible";
-    }
-    else if (document.getElementById("personlist").value == "teachers") {
-        document.getElementById("adminMenu").style.visibility = "hidden";
-        document.getElementById("studentMenu").style.visibility = "hidden";
-        document.getElementById("teacherMenu").style.visibility = "visible";
-        document.getElementById("teacherMenu").style.position = "absolute";
-        document.getElementById("teacherMenu").style.top = "390px";
 
-
-    }
-    else {
-        document.getElementById("adminMenu").style.visibility = "hidden";
-        document.getElementById("teacherMenu").style.visibility = "hidden";
-        document.getElementById("studentMenu").style.visibility = "visible";
-        document.getElementById("studentMenu").style.position = "absolute";
-        document.getElementById("studentMenu").style.top = "390px";
-    }
-
-}
 
 function isIdInTeacherList() {
     var flag = false
@@ -254,6 +235,92 @@ function isIdInTeacherList() {
     });
 
     return flag;
+}
+
+function loginCheck() {
+    let username_input = document.getElementById("username_id").value
+    let password_input = document.getElementById("psw").value
+    if (username_input === "admin" && password_input == "1234") {
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("loginMenu").style.visibility = "hidden";
+        document.getElementById("adminMenu").style.visibility = "visible";
+        document.getElementById("adminMenu").style.position = "absolute";
+        document.getElementById("adminMenu").style.top = "200px";
+    }
+    else if (checkTeacherLogin(username_input, password_input)) {
+        //alert("teacher login")
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("loginMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "visible";
+        document.getElementById("teacherMenu").style.position = "absolute";
+        document.getElementById("teacherMenu").style.top = "200px";
+        //createDropdownStudent2(teacherList[].students)
+        let returnTeacherId = idTeacherByName(username_input, password_input)
+        createDropdownStudent2(teacherList[returnTeacherId].students)
+        document.getElementById("login_teacher_name").innerHTML = "Teacher name: "+username_input
+
+    }
+    else if (checkStudentLogin(username_input, password_input)) {
+        //alert("student login")
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("loginMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "visible";
+        document.getElementById("studentMenu").style.position = "absolute";
+        document.getElementById("studentMenu").style.top = "200px";
+        let returnStudentId = idStudentByName(username_input, password_input)
+        createDropdownHomework2(studentList[returnStudentId].homeworks)
+        document.getElementById("login_student_name").innerHTML = "Student name: "+username_input
+
+    }
+    else
+        alert("user/password incorrect")
+};
+
+function checkTeacherLogin(username, passwd) {
+    var flag = false
+    teacherList.forEach(element => {
+        if (element.teacher_name === username && element.password_teacher === passwd)
+            flag = true
+    });
+    return flag;
+}
+
+function checkStudentLogin(username, passwd) {
+    var flag = false
+    studentList.forEach(element => {
+        if (element.student_name === username && element.password_student === passwd)
+            flag = true
+    });
+    return flag;
+}
+
+function backToMainPage() {
+    document.getElementById("studentMenu").style.visibility = "hidden";
+    document.getElementById("teacherMenu").style.visibility = "hidden";
+    document.getElementById("adminMenu").style.visibility = "hidden";
+    document.getElementById("loginMenu").style.visibility = "visible";
+
+}
+
+function idTeacherByName(username, passwd){
+    let returnValue = "not found";
+    teacherList.forEach(element => {
+        if (element.teacher_name === username && element.password_teacher === passwd)
+                returnValue=element.teacher_id      
+    });
+    return returnValue 
+}
+
+function idStudentByName(username, passwd){
+    let returnValue = "not found";
+    studentList.forEach(element => {
+        if (element.student_name === username && element.password_student === passwd)
+                returnValue=element.student_id      
+    });
+    return returnValue 
 }
 
 function submission() { //ref: https://www.w3schools.com/jsref/prop_fileupload_files.asp
@@ -285,18 +352,6 @@ function submission() { //ref: https://www.w3schools.com/jsref/prop_fileupload_f
     }
     document.getElementById("pFileUpload").innerHTML = txt;
 }
-
-function loginCheck() {
-    //location.href = "index.html";    
-    if (document.getElementById("username_id").value === "admin" &&
-        document.getElementById("psw").value == "1234")
-        location.href = "index.html";
-    else
-        alert("user/password incorrect")
-};
-
-
-
 /*function isIdInStudentList() {
     var flag = false
     studentList.forEach(element => {
@@ -305,6 +360,30 @@ function loginCheck() {
     });
 
     return flag;
+}
+
+function onChangeDp() {
+    if (document.getElementById("personlist").value == "admin") {
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("adminMenu").style.visibility = "visible";
+    }
+    else if (document.getElementById("personlist").value == "teachers") {
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "visible";
+        document.getElementById("teacherMenu").style.position = "absolute";
+        document.getElementById("teacherMenu").style.top = "390px";
+      
+    }
+    else {
+        document.getElementById("adminMenu").style.visibility = "hidden";
+        document.getElementById("teacherMenu").style.visibility = "hidden";
+        document.getElementById("studentMenu").style.visibility = "visible";
+        document.getElementById("studentMenu").style.position = "absolute";
+        document.getElementById("studentMenu").style.top = "390px";
+    }
+
 }*/
 
 
