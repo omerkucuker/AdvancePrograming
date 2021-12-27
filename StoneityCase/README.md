@@ -10,6 +10,7 @@ Pattern;
 
 
 Önce verilen arrayi azalan değerde sıraladım. Sonra ikişerli sıralamada yukarıdaki patternin olduğunu fark ettim. Bunun için for döngüsünde arrayin yarısı kadar uzunlukta birer birer artan ve ikişer ikişer artan indeksler için de ikişerli artan değer tanımlayarak sorunu çözdüm.
+Son olarak eğer liste tek elemanlıysa ortanca elemana minimum elemanı ekledim.
 
 
 

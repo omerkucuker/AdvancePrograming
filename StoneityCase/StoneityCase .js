@@ -11,6 +11,7 @@ result[i]=listDescending[j];
 result[list.length-i-1]=listDescending[j+1];
 j+=2;
 }
+if(!(list.length % 2 == 0)){result[len]=Math.min(...list) };
 return result;
 }
 console.log(descendingSort(points5));
