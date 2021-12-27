@@ -9,7 +9,7 @@ Pattern;
 #### 2.adım; 4.index 2'ye  ---  5.index 3'e
 
 
-Bunun için for döngüsünde arrayin yarısı kadar uzunlukta birer birer artan ve ikişer ikişer artan indeksler için de ikişerli artan değer tanımlayarak sorunu çözdüm.
+Önce verilen arrayi azalan değerde sıraladım. Sonra ikişerli sıralamada yukarıdaki patternin olduğunu fark ettim. Bunun için for döngüsünde arrayin yarısı kadar uzunlukta birer birer artan ve ikişer ikişer artan indeksler için de ikişerli artan değer tanımlayarak sorunu çözdüm.
 
 
 
